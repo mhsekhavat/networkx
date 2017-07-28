@@ -791,6 +791,7 @@ class GraphMLReader(GraphML):
 
         source = self.node_type(edge_element.get("source"))
         target = self.node_type(edge_element.get("target"))
+        print('!!!!!!!!!!!!', graphml_keys, edge_element)
         data = self.decode_data_elements(graphml_keys, edge_element)
         # GraphML stores edge ids as an attribute
         # NetworkX uses them as keys in multigraphs too if no key
