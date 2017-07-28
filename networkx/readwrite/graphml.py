@@ -639,9 +639,6 @@ class GraphMLWriterLxml(GraphMLWriter):
         if G.is_multigraph():
             attributes = {}
             for u, v, ekey, d in G.edges(keys=True, data=True):
-                self.attribute_types[("key", "edge")].add(type(ekey))
-                if "key" not in attributes:
-                    attributes["key"] = ekey
                 for k, v in d.items():
                     self.attribute_types[(make_str(k), "edge")].add(type(v))
                     if k not in attributes:
@@ -791,7 +788,7 @@ class GraphMLReader(GraphML):
 
         source = self.node_type(edge_element.get("source"))
         target = self.node_type(edge_element.get("target"))
-        print('!!!!!!!!!!!!', graphml_keys, edge_element)
+        print('!!!!!!!!!!!!', graphml_keys, edge_element, edge_element.get('id'), )
         data = self.decode_data_elements(graphml_keys, edge_element)
         # GraphML stores edge ids as an attribute
         # NetworkX uses them as keys in multigraphs too if no key

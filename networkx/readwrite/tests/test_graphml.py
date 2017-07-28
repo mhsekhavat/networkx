@@ -357,6 +357,8 @@ class TestReadGraphML(BaseGraphML):
         fh = io.BytesIO()
         nx.write_graphml(G, fh)
         fh.seek(0)
+        print(fh.read().decode())
+        fh.seek(0)
         H = nx.read_graphml(fh, node_type=int)
         assert_edges_equal(G.edges(data=True, keys=True), H.edges(data=True, keys=True))
         assert_equal(G._adj, H._adj)
