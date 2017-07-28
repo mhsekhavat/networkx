@@ -817,6 +817,8 @@ class GraphMLReader(GraphML):
         data = {}
         for data_element in obj_xml.findall("{%s}data" % self.NS_GRAPHML):
             key = data_element.get("key")
+            print("~~~~~~~~~~~~~~~~~~key=", key)
+            print(graphml_keys)
             try:
                 data_name = graphml_keys[key]['name']
                 data_type = graphml_keys[key]['type']
